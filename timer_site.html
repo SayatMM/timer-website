@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жди :)</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        #timer {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        #message {
+            display: none;
+            font-size: 1.5em;
+            color: #d9534f;
+        }
+    </style>
+</head>
+<body>
+    <div id="timer">00:00:00</div>
+    <div id="message">Чекни WhatsApp!</div>
+    <script>
+        const targetDate = new Date("2025-01-14T04:17:00"); // Задай дату и время
+        const timer = document.getElementById("timer");
+        const message = document.getElementById("message");
+
+        function updateTimer() {
+            const now = new Date();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                clearInterval(timerInterval);
+                timer.style.display = "none";
+                message.style.display = "block";
+
+                // Уведомить сервер (для Телеграма)
+                fetch('http://localhost:5000/notify');
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, "0");
+            const minutes = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, "0");
+            const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+
+            timer.textContent = `${days} Дней ${hours}:${minutes}:${seconds}`;
+        }
+
+        const timerInterval = setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>

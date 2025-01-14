@@ -32,7 +32,7 @@
     <div id="timer">00:00:00</div>
     <div id="message">Чекни WhatsApp!</div>
     <script>
-        const targetDate = new Date("2025-01-14T22:15:00"); // Задай дату и время
+        const targetDate = new Date("2025-01-14T22:21:00"); // Задай дату и время
         const timer = document.getElementById("timer");
         const message = document.getElementById("message");
 
@@ -46,7 +46,7 @@
                 message.style.display = "block";
 
                 // Уведомить сервер (для Телеграма)
-                fetch('https://5baf-212-46-56-19.ngrok-free.app');
+                fetch('https://5baf-212-46-56-19.ngrok-free.app/notify');
                 return;
             }
 

@@ -1,7 +1,7 @@
 import telebot
 
-BOT_TOKEN = "ТВОЙ_ТОКЕН"  # Замените на токен вашего бота
-CHAT_ID = "ТВОЙ_CHAT_ID"  # Замените на ваш Chat ID
+BOT_TOKEN = "5124149668:AAGVQmd9ywi_PcF77Dwq60uf6VjXIFTdVlI"  # Замените на токен вашего бота
+CHAT_ID = "1379579817"  # Замените на ваш Chat ID
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
